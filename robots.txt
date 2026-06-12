@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://claru.cl/sitemap.xml
+
+# Bloquear acceso a archivos de configuración
+Disallow: /vercel.json

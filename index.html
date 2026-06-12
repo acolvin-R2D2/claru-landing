@@ -1,9 +1,12 @@
 <!doctype html>
-<html lang="es-CL">
+<html lang="es-CL" dir="ltr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Claru — Contabilidad que entiendes</title>
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
 <meta name="description" content="Claru — Contabilidad que entiendes. Estudio contable moderno para empresas de servicio: cumplimiento al día y un resumen mensual que te explica tu negocio." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231B36FF'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23fff' stroke-width='11'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +49,26 @@
   .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn.ghost:hover{border-color:var(--ink);box-shadow:none}
   @media(max-width:860px){.navlinks{display:none}}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-nav{display:none;position:fixed;inset:72px 0 0 0;background:var(--paper);z-index:49;padding:24px 28px;flex-direction:column;gap:6px;border-top:1px solid var(--line)}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{font-size:18px;font-weight:600;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line)}
+  .mobile-nav a:last-child{border-bottom:none}
+  .mobile-nav .btn{margin-top:16px;justify-content:center;width:100%}
+  @media(max-width:860px){.hamburger{display:flex}}
+  @media(max-width:480px){.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1 / -1}}
+  @media(max-width:380px){.metrics{grid-template-columns:1fr}}
+  @media(max-width:480px){.precio-amt,.amt{font-size:40px}}
+  @media(max-width:480px){.hero .sub{font-size:17px}}
+  @media(max-width:480px){.wrap{padding:0 20px}}
+  @media(max-width:480px){.reframe{padding:32px 22px}}
+  @media(max-width:480px){.price{padding:28px 22px}}
+  @media(max-width:480px){.cl-body{padding:16px}}
+  @media(max-width:480px){.conviction{padding:26px 20px}}
 
   .hero{position:relative;padding:84px 0 76px}
   .fog{position:absolute;inset:-10% 0 auto 0;height:420px;pointer-events:none;background:radial-gradient(60% 120% at 72% 0%,rgba(94,115,255,.10),transparent 70%);filter:blur(10px);opacity:1;animation:foglift 2.4s var(--ease) forwards}
@@ -209,7 +232,7 @@
   .faq-item{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px}
   .faq-q{font-family:"Bricolage Grotesque";font-weight:700;font-size:18px;margin:0 0 10px;letter-spacing:-.01em;line-height:1.2}
   .faq-a{color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6}
-  @media(max-width:780px){.faq-grid{grid-template-columns:1fr}}
+  
   .reveal{opacity:1;transform:none}
     .claridad .defog{filter:none;opacity:1;transform:none}
     .fog{opacity:.35}
@@ -225,6 +248,136 @@
   .conv-n{font-family:"JetBrains Mono";font-size:11px;color:var(--ink-soft);flex:none;letter-spacing:.08em}
   @media(max-width:860px){.conviction{grid-template-columns:1fr;gap:28px;padding:30px 26px}}
 </style>
+
+  <!-- SEO: Meta tags básicos -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Claru" />
+  <meta name="keywords" content="contabilidad para empresas de servicio, contador para pymes Chile, estudio contable Santiago, contabilidad agencias, F29 empresas servicio, cumplimiento tributario pymes, asesoría contable Santiago Chile" />
+  <link rel="canonical" href="https://claru.cl/" />
+
+  <!-- SEO: Open Graph (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://claru.cl/" />
+  <meta property="og:title" content="Claru — Contabilidad que entiendes" />
+  <meta property="og:description" content="Estudio contable moderno para empresas de servicio en Chile. Cumplimiento tributario al día y un resumen mensual que te explica tu negocio en lenguaje claro." />
+  <meta property="og:image" content="https://claru.cl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Claru" />
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Claru — Contabilidad que entiendes" />
+  <meta name="twitter:description" content="Estudio contable moderno para empresas de servicio en Chile. Cumplimiento al día y claridad financiera todos los meses." />
+  <meta name="twitter:image" content="https://claru.cl/og-image.png" />
+
+  <!-- SEO: Structured Data — ProfessionalService + LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["ProfessionalService", "AccountingService"],
+    "name": "Claru",
+    "description": "Estudio contable moderno para empresas de servicio en Chile. Contabilidad, cumplimiento tributario y asesoría financiera con tecnología e inteligencia artificial.",
+    "url": "https://claru.cl",
+    "logo": "https://claru.cl/og-image.png",
+    "image": "https://claru.cl/og-image.png",
+    "telephone": "+56966786020",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -33.4489,
+      "longitude": -70.6693
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Chile"
+    },
+    "priceRange": "$$",
+    "currenciesAccepted": "CLP",
+    "paymentAccepted": "Transferencia bancaria, tarjeta de crédito",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Planes de contabilidad",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Plan Cumplimiento",
+          "description": "Contabilidad mensual completa, F29, obligaciones SII al día y resumen mensual de situación financiera.",
+          "price": "5",
+          "priceCurrency": "UF",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "5",
+            "priceCurrency": "UF",
+            "unitText": "mes"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Plan Asesoría Activa",
+          "description": "Todo el plan Contabilidad más resumen ampliado con análisis de márgenes, alertas proactivas y planificación tributaria anual.",
+          "price": "12",
+          "priceCurrency": "UF",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "12",
+            "priceCurrency": "UF",
+            "unitText": "mes"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- SEO: FAQ Schema (mejora snippets en Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa con mi contabilidad anterior?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El servicio parte desde el año de contratación. No necesitamos ni revisamos tu historial previo para comenzar. En la evaluación inicial te decimos exactamente qué necesitamos para activar tu cuenta sin interrupciones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta la Renta anual (F22)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En el plan Contabilidad, la declaración de Renta anual tiene un valor adicional de 3 UF + IVA, cobrado una vez al año en el período de Operación Renta. En el plan Asesoría, la F22 está incluida sin costo adicional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tengo un contador asignado o atiende un equipo rotativo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tienes un contador asignado desde el primer día. Siempre sabes con quién hablar y quién conoce el historial de tu empresa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Si decido cambiarme, ¿qué pasa con mi información?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tu información es tuya. Si cancelas el servicio, te entregamos todos tus libros contables en formato descargable dentro de 5 días hábiles. Sin retención de datos, sin condiciones."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -236,12 +389,24 @@
         <a href="#quienes">Quiénes somos</a>
         <a href="#como">Cómo funciona</a>
         <a href="#claridad">Claridad</a>
+        <a href="#quien">Para quién</a>
         <a href="#precios">Precios</a>
         <a href="#faq">FAQ</a>
-        <a href="#quien">Para quién</a>
       </div>
       <button class="btn accent" data-open-eval data-plan="">Solicita tu evaluación</button>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#quienes" class="mobile-link">Quiénes somos</a>
+      <a href="#como" class="mobile-link">Cómo funciona</a>
+      <a href="#claridad" class="mobile-link">Claridad</a>
+      <a href="#quien" class="mobile-link">Para quién</a>
+      <a href="#precios" class="mobile-link">Precios</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+      <button class="btn accent" data-open-eval data-plan="" style="margin-top:12px">Solicita tu evaluación</button>
+    </div>
   </div>
 </header>
 
@@ -252,8 +417,8 @@
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Contabilidad que entiendes</div>
-          <div class="encuadre" style="margin-top:22px"><span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span><h1>Tu contador al día.<br><em>Tus números, claros.</em></h1></div>
-          <p class="sub">Nos encargamos de tu contabilidad, tus impuestos y tu cumplimiento tributario. Y cada mes te explicamos cómo está tu negocio, qué cambió y qué decisiones conviene tomar.</p>
+          <div class="encuadre" style="margin-top:22px"><span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span><h1>Deja de reaccionar a tus números. Empieza a saber qué pasa.</h1></div>
+          <p class="sub">Mientras tú creces, nosotros nos encargamos. Cada mes sabes exactamente qué está pasando con tu dinero y qué decisiones tomar.</p>
           <div class="cta-row">
             <button class="btn accent" data-open-eval data-plan="">Solicita tu evaluación</button>
             <a class="btn ghost" href="#precios">Ver precios</a>
@@ -286,7 +451,7 @@
   <section style="padding:0 0 0">
     <div class="wrap">
       <div class="authority-band reveal">
-        <span class="auth-line">Claru nace de más de 6 años de experiencia trabajando con miles de pymes chilenas en contabilidad, tributaria y gestión financiera.</span>
+        <span class="auth-line">Claru nace de más de 6 años de experiencia trabajando con pymes chilenas en el ecosistema SaaS contable en contabilidad, tributaria y gestión financiera.</span>
       </div>
     </div>
   </section>
@@ -296,9 +461,9 @@
       <div class="reframe reveal">
         <h2 class="h2">Cumplir no es suficiente. También necesitas entender.</h2>
         <div class="three">
-          <div class="col"><div class="tag">El modelo tradicional</div><h3>Solo números, sin contexto</h3><p>Tu contador presenta el F29, cuadra los libros y listo. Sabes cuánto pagaste, pero no por qué ni qué hacer diferente.</p></div>
-          <div class="col"><div class="tag">Lo que falta</div><h3>Orden sin claridad</h3><p>Estás al día con el SII, pero no sabes si tu margen es sano, cuánta caja tienes para operar ni qué te espera en Operación Renta.</p></div>
-          <div class="col now"><div class="tag">El modelo Claru</div><h3>Cumplimiento + comprensión</h3><p>Tu contabilidad al día, sin que tengas que perseguir documentos. Y cada mes, un resumen claro de cómo está tu negocio y qué conviene hacer.</p></div>
+          <div class="col"><div class="tag">El modelo tradicional</div><h3>Sabes qué pagaste en impuestos, pero no sabes qué ganaste realmente</h3><p>Tu contador presenta el F29, cuadra los libros y listo. Sabes cuánto pagaste, pero no por qué ni qué hacer diferente.</p></div>
+          <div class="col"><div class="tag">Lo que falta</div><h3>Creces a ciegas sin saber si tu margen te sostiene</h3><p>Estás al día con el SII, pero no sabes si tu margen es sano, cuánta caja tienes para operar ni qué te espera en Operación Renta.</p></div>
+          <div class="col now"><div class="tag">El modelo Claru</div><h3>Sabes qué está pasando. Puedes decidir con datos reales</h3><p>Tu contabilidad al día, sin que tengas que perseguir documentos. Y cada mes, un resumen claro de cómo está tu negocio y qué conviene hacer.</p></div>
         </div>
       </div>
     </div>
@@ -350,6 +515,33 @@
       </div>
     </div>
   </section>
+  <!-- Nueva sección: Por qué empresas de servicio nos eligen -->
+  <section style="padding-top:70px;background:rgba(27,54,255,.04);border-radius:28px;margin:0 auto;max-width:1200px">
+    <div class="wrap">
+      <h2 class="h2" style="color:var(--ink)">¿Por qué empresas de servicio en particular?</h2>
+      <p style="font-size:17px;color:var(--ink-soft);margin:16px 0 40px;max-width:65ch">Porque facturan diferente. No tienen inventario. Sus clientes pagan en términos, no al contado. Crean deuda rápidamente. Tu contabilidad necesita ser pensada para eso.</p>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+        
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;margin:0 0 12px;color:var(--accent)">Flujo de caja único</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Cobramos en 60 días, pagamos en 30. Tu estructura de deuda es específica. No es igual que una tienda. Lo entendemos.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;margin:0 0 12px;color:var(--accent)">Margen por proyecto</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Cada cliente puede tener un margen diferente. Rastreamos eso. Otros contadores lo dejan en "utilidades".</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;margin:0 0 12px;color:var(--accent)">Crecimiento no lineal</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Cuando creces de 5 a 10 personas, tu estructura tributaria cambia. Anticipamos eso.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <section id="claridad" style="padding-top:30px">
     <div class="wrap">
@@ -382,6 +574,34 @@
       </div>
     </div>
   </section>
+  
+  <!-- Sección: Situaciones que resolvemos -->
+  <section style="padding-top:70px">
+    <div class="wrap">
+      <div class="seclabel"><span class="eyebrow">Para quién es Claru</span><span class="rule"></span></div>
+      <h2 class="h2">Situaciones que resolvemos todos los meses</h2>
+      <p style="font-size:17px;color:var(--ink-soft);margin:16px 0 40px;max-width:65ch">Si reconoces alguna de estas, probablemente estamos hablando del mismo problema.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;margin-top:8px">
+
+        <div style="background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:28px 24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 12px;line-height:1.2">¿Mi margen es sano o solo parece sano?</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">El estado de resultados dice que ganaste. Pero no sabes si ese margen te permite contratar, crecer o mantener tu ritmo. Te lo clarificamos cada mes.</p>
+        </div>
+
+        <div style="background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:28px 24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 12px;line-height:1.2">Ganamos bien, pero siempre estamos cortos de caja</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Ganancia y caja son cosas distintas. Cuando cobramos en 60 y pagamos en 30, el problema aparece solo. Lo vemos antes de que duela.</p>
+        </div>
+
+        <div style="background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:28px 24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 12px;line-height:1.2">¿Cuánto voy a pagar en Renta este año?</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">La sorpresa de Operación Renta es evitable. Si sabes en julio lo que viene en abril, puedes prepararte. Ese es nuestro trabajo.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <section id="quien" style="padding-top:30px">
     <div class="wrap">
@@ -404,6 +624,49 @@
   </section>
 
 
+  
+  <!-- Nueva sección: Temas que revisamos contigo (exclusivo plan Asesoría Activa) -->
+  <section style="padding-top:70px;border-bottom:1px solid var(--line);padding-bottom:70px">
+    <div class="wrap">
+      <h2 class="h2">Si contratas Plan Asesoría Activa, estos son los temas que tocamos contigo cada mes</h2>
+      <p style="font-size:16px;color:var(--ink-soft);margin:20px 0 50px;max-width:70ch">Cada mes revisamos margen, caja y obligaciones tributarias. Te avisamos cuando algo cambia antes de que impacte tu caja.</p>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Margen operativo</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Si tu margen cae sin razón aparente, lo detectamos a tiempo y te decimos por qué.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Situación de caja</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Ganancia no es lo mismo que caja. Si vas a estar corto para pagar nómina, lo ves venir con tiempo.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Impuestos que vienen</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">No es sorpresa en Operación Renta. Te avisamos con meses de anticipación cuánto necesitarás provisionar para tus PPM.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Decisiones de crecimiento</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">¿Puedo contratar 2 personas más? ¿Es hora de subir precios? Tus números te responden. Te lo decimos de frente.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Cambios tributarios</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Si el SII cambia una regla o una ley tributaria te impacta, tú lo sabes de tu asesor, no por Google.</p>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:20px;margin:0 0 10px;color:var(--ink)">Estructura de precios</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">¿Estás cobrando lo correcto? Revisamos si tu estructura de precios soporta tu estructura de costos.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section id="precios" style="padding-top:30px">
     <div class="wrap">
       <div class="seclabel reveal"><span class="eyebrow">Precios</span><span class="rule"></span></div>
@@ -423,22 +686,49 @@
           <button class="btn ghost" data-open-eval data-plan="Cumplimiento">Solicitar evaluación</button>
         </div>
         <div class="price dark reveal">
-          <span class="badge">Más completo</span>
+          <span class="badge">Para quien prefiere que alguien vigile</span>
           <div class="pname">Asesoría</div>
           <div class="amt">12 UF<small> + IVA / mes</small></div>
           <div class="ptag">Para el dueño que quiere más contexto, no solo más cumplimiento.</div>
           <ul>
             <li><span class="c">&check;</span> Todo lo del plan Contabilidad</li>
-            <li><span class="c">&check;</span> Resumen ampliado: márgenes, proyección de caja y lectura tributaria del trimestre</li>
-            <li><span class="c">&check;</span> Alertas proactivas cuando algo cambia o conviene actuar</li>
-            <li><span class="c">&check;</span> Planificación tributaria anual incluida</li>
+            <li><span class="c">&check;</span> Sabes cada mes si tu margen te permite crecer o necesitas frenar</li>
+            <li><span class="c">&check;</span> Te avisamos cuando algo cambia antes de que impacte tu caja o conviene actuar</li>
+            <li><span class="c">&check;</span> Sin sorpresas en Operación Renta — sabemos lo que viene desde julio incluida</li>
             <li><span class="c">&check;</span> Renta anual (F22) incluida</li>
-            <li><span class="c">&check;</span> Reunión mensual disponible cuando la necesites</li>
+            <li><span class="c">&check;</span> Reunión mensual cuando la necesites — agendas en menos de 48 horas</li>
           </ul>
           <button class="btn accent" data-open-eval data-plan="Cumplimiento + Asesoría">Solicitar evaluación</button>
         </div>
       </div>
       <p class="pnote">Precios publicados y sin letra chica. Pago mensual, sin contrato anual. Empezamos en menos de una semana.</p>
+    </div>
+  </section>
+
+  
+  <!-- Nueva sección: Confianza y garantías -->
+  <section style="padding-top:70px;background:rgba(27,54,255,.04);border-radius:28px;margin:0 auto;max-width:1200px;padding:60px 40px">
+    <div class="wrap">
+      <h2 class="h2" style="color:var(--ink);margin-bottom:40px">Lo que te garantizamos</h2>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+        
+        <div style="border-left:3px solid var(--accent);padding-left:24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 10px;color:var(--ink)">Dinero de vuelta en 30 días</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Si en los primeros 30 días no tienes tu contabilidad al día y tu primer resumen mensual, devolvemos lo que pagaste.</p>
+        </div>
+
+        <div style="border-left:3px solid var(--accent);padding-left:24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 10px;color:var(--ink)">Respuesta en menos de 24h</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Si preguntas algo, tienes respuesta del contador (no un email automático) en menos de 1 día hábil.</p>
+        </div>
+
+        <div style="border-left:3px solid var(--accent);padding-left:24px">
+          <h3 style="font-family:'Bricolage Grotesque';font-weight:700;font-size:18px;margin:0 0 10px;color:var(--ink)">Tus datos, siempre disponibles</h3>
+          <p style="color:var(--ink-soft);font-size:15.5px;margin:0;line-height:1.6">Si te vas, te entregamos en 5 días hábiles tus libros, balances, estados en formato descargable.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -485,7 +775,7 @@
   <div class="wrap">
     <div class="foot">
       <a class="brand" href="#top" style="font-size:18px;padding:5px 8px"><span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>Claru</a>
-      <span>Contabilidad y asesoría para empresas de servicio. · Santiago, Chile</span>
+      <span>Contabilidad y asesoría para empresas de servicio en Santiago, Chile.</span>
       <span class="mono" style="font-size:12px">claru.cl</span>
     </div>
   </div>
@@ -505,7 +795,7 @@
         <form id="eval-form" novalidate>
           <fieldset class="fgroup" style="border:0;padding:0;margin:0">
             <legend>Tus datos</legend>
-            <div class="field full"><label for="f-nombre">Nombre <span class="req">*</span></label><input id="f-nombre" name="nombre" autocomplete="name"></div>
+            <div class="field full"><label for="f-nombre">Nombre <span class="req">*</span></label><input id="f-nombre" name="nombre" type="text" autocomplete="name" spellcheck="false"></div>
             <div class="row">
               <div class="field"><label for="f-correo">Correo <span class="req">*</span></label><input id="f-correo" name="correo" type="email" autocomplete="email"></div>
               <div class="field"><label for="f-tel">Teléfono <span class="req">*</span></label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 ..."></div>
@@ -513,7 +803,7 @@
           </fieldset>
           <fieldset class="fgroup" style="border:0;padding:0;margin:0">
             <legend>Tu empresa</legend>
-            <div class="field full"><label for="f-razon">Razón social <span class="req">*</span></label><input id="f-razon" name="razon_social"></div>
+            <div class="field full"><label for="f-razon">Razón social <span class="req">*</span></label><input id="f-razon" name="razon_social" type="text" autocomplete="organization" spellcheck="false"></div>
             <div class="field full"><label for="f-rubro">Rubro</label>
               <select id="f-rubro" name="rubro">
                 <option value="">Selecciona…</option>
@@ -564,6 +854,24 @@
 </div>
 
 <script>
+  // Hamburger menu
+  const hamburger=document.getElementById('hamburger');
+  const mobileNav=document.getElementById('mobile-nav');
+  hamburger.addEventListener('click',()=>{
+    const open=mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open',open);
+    hamburger.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('locked',open);
+  });
+  document.querySelectorAll('.mobile-link').forEach(a=>{
+    a.addEventListener('click',()=>{
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded',false);
+      document.body.classList.remove('locked');
+    });
+  });
+
   const hdr=document.getElementById('hdr');
   addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8),{passive:true});
   addEventListener('load',()=>{setTimeout(()=>document.getElementById('claridad-card').classList.add('clear'),420);});
@@ -593,6 +901,13 @@
   document.getElementById('m-done').addEventListener('click',closeEval);
   ov.addEventListener('click',e=>{if(e.target===ov)closeEval();});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))closeEval();});
+
+  // Sanitización básica anti-XSS
+  function sanitize(str){
+    return String(str).replace(/[<>"'`]/g, function(c){
+      return {'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','`':'&#x60;'}[c];
+    }).trim().slice(0,500);
+  }
 
   // Tally integration — Form ID: 0QAer0
   const form=document.getElementById('eval-form');
@@ -626,16 +941,20 @@
       tallyForm.target='tally-iframe';
       tallyForm.style.display='none';
       const fields={
-        'Nombre': data['nombre']||'',
-        'Correo': data['correo']||'',
-        'Telefono': data['telefono']||'',
-        'Razon Social': data['razon_social']||'',
-        'Rubro': data['rubro']||'',
-        'Trabajadores': data['trabajadores']||'',
-        'Documentos': data['documentos']||'',
-        'Remuneraciones': data['remuneraciones']||'',
-        'Plan': data['plan']||''
+        'Nombre': sanitize(data['nombre']||''),
+        'Correo': sanitize(data['correo']||''),
+        'Telefono': sanitize(data['telefono']||''),
+        'Razon Social': sanitize(data['razon_social']||''),
+        'Rubro': sanitize(data['rubro']||''),
+        'Trabajadores': sanitize(data['trabajadores']||''),
+        'Documentos': sanitize(data['documentos']||''),
+        'Remuneraciones': sanitize(data['remuneraciones']||''),
+        'Plan': sanitize(data['plan']||'')
       };
+      // campos originales sobreescritos — ignorar el bloque de abajo
+      const _fields={
+      };
+
       Object.keys(fields).forEach(function(k){
         const inp=document.createElement('input');
         inp.type='hidden';inp.name=k;inp.value=fields[k];
