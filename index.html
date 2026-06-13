@@ -33,7 +33,7 @@
   .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
   button{font-family:inherit}
 
-  header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(10px);background:color-mix(in srgb,var(--paper) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+  header{position:sticky;top:0;z-index:10001;backdrop-filter:saturate(1.4) blur(10px);background:color-mix(in srgb,var(--paper) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
   header.scrolled{border-color:var(--line)}
   nav{display:flex;align-items:center;justify-content:space-between;height:72px}
   .brand{display:inline-flex;align-items:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;letter-spacing:-.03em;position:relative;padding:6px 10px}
@@ -53,12 +53,12 @@
   .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn.ghost:hover{border-color:var(--ink);box-shadow:none}
   @media(max-width:860px){.navlinks{display:none}}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;position:relative;z-index:10000}
   .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
   .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .hamburger.open span:nth-child(2){opacity:0}
   .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .mobile-nav{display:none;position:fixed;inset:72px 0 0 0;background:var(--paper);z-index:200;padding:24px 28px;flex-direction:column;gap:6px;border-top:1px solid var(--line)}
+  .mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:#EEF2F7;z-index:9999;padding:24px 28px 32px;flex-direction:column;gap:6px;overflow-y:auto}
   .mobile-nav.open{display:flex}
   .mobile-nav a{font-size:18px;font-weight:600;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line)}
   .mobile-nav a:last-child{border-bottom:none}
@@ -423,7 +423,10 @@
         <span></span><span></span><span></span>
       </button>
     </nav>
-    <div class="mobile-nav" id="mobile-nav">
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
       <a href="#quienes" class="mobile-link">Quiénes somos</a>
       <a href="#como" class="mobile-link">Cómo funciona</a>
       <a href="#claridad" class="mobile-link">Claridad</a>
@@ -432,8 +435,7 @@
       <a href="#faq" class="mobile-link">FAQ</a>
       <button class="btn accent" data-open-eval data-plan="" style="margin-top:12px">Solicita tu evaluación</button>
     </div>
-  </div>
-</header>
+
 
 <main id="top">
   <section class="hero">
