@@ -20,6 +20,8 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "xa6ua4ot74");
 </script>
+<!-- Tally Embed -->
+<script type="module" src="https://tally.so/widgets/embed.js"></script>
 <title>Claru — Contabilidad que entiendes</title>
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -441,7 +443,7 @@
         <a href="#precios">Precios</a>
         <a href="#faq">FAQ</a>
       </div>
-      <button class="btn accent" data-open-eval data-plan="">Solicita tu evaluación</button>
+      <button class="btn accent" data-tally-open="0QAer0" data-plan="">Solicita tu evaluación</button>
       <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -464,7 +466,7 @@
         <a href="#precios" class="mobile-link">Precios</a>
         <a href="#faq" class="mobile-link">FAQ</a>
       </nav>
-      <button class="btn accent mobile-cta" data-open-eval data-plan="">Solicita tu evaluación</button>
+      <button class="btn accent mobile-cta" data-tally-open="0QAer0" data-plan="">Solicita tu evaluación</button>
     </div>
 
 
@@ -478,7 +480,7 @@
           <div class="encuadre" style="margin-top:22px"><span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span><h1>Deja de reaccionar a tus números. Empieza a saber qué pasa.</h1></div>
           <p class="sub">Mientras tú creces, nosotros nos encargamos. Cada mes sabes exactamente qué está pasando con tu dinero y qué decisiones tomar.</p>
           <div class="cta-row">
-            <button class="btn accent" data-open-eval data-plan="">Solicita tu evaluación</button>
+            <button class="btn accent" data-tally-open="0QAer0" data-plan="">Solicita tu evaluación</button>
             <a class="btn ghost" href="#precios">Ver precios</a>
           </div>
           <div class="trust-line">
@@ -741,7 +743,7 @@
             <li><span class="c">&check;</span> Soporte por WhatsApp y correo</li>
             <li><span class="c">+</span> Renta anual (F22) adicional</li>
           </ul>
-          <button class="btn ghost" data-open-eval data-plan="Cumplimiento">Solicitar evaluación</button>
+          <button class="btn ghost" data-tally-open="0QAer0" data-plan="Cumplimiento">Solicitar evaluación</button>
         </div>
         <div class="price dark reveal">
           <span class="badge">Para quien quiere contexto, no solo cumplimiento</span>
@@ -756,7 +758,7 @@
             <li><span class="c">&check;</span> Renta anual (F22) incluida</li>
             <li><span class="c">&check;</span> Reunión mensual cuando la necesites — agendas en menos de 48 horas</li>
           </ul>
-          <button class="btn accent" data-open-eval data-plan="Cumplimiento + Asesoría">Solicitar evaluación</button>
+          <button class="btn accent" data-tally-open="0QAer0" data-plan="Cumplimiento + Asesoría">Solicitar evaluación</button>
         </div>
       </div>
       <p class="pnote">Precios publicados y sin letra chica. Pago mensual, sin contrato anual. Empezamos en menos de una semana.</p>
@@ -821,7 +823,7 @@
         <h2 class="h2">¿Quieres una contabilidad que de verdad te sirva?</h2>
         <p style="color:var(--ink-soft);max-width:46ch;margin:0 auto 28px">Cuéntanos de tu empresa. En menos de 24 horas hábiles te respondemos con una propuesta y una muestra de cómo se vería tu resumen mensual.</p>
         <div class="cta-row">
-          <button class="btn accent" data-open-eval data-plan="">Solicita tu evaluación</button>
+          <button class="btn accent" data-tally-open="0QAer0" data-plan="">Solicita tu evaluación</button>
           <a class="btn ghost" href="#precios">Ver precios</a>
         </div>
       </div>
@@ -839,29 +841,6 @@
   </div>
 </footer>
 
-<!-- MODAL: Solicita tu evaluación -->
-<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="m-title">
-  <div class="modal" id="modal">
-    <div id="form-view">
-      <div class="m-head">
-        <button class="m-close" id="m-close" aria-label="Cerrar">&times;</button>
-        <h3 id="m-title">Cuéntanos de tu empresa</h3>
-        <p>Con esta información preparamos tu evaluación y te mostramos cómo se vería tu primer resumen mensual. Sin costo, sin compromiso.</p>
-        <span class="planpill" id="planpill" hidden>Plan de interés: <b id="planpill-txt"></b></span>
-      </div>
-      <div class="m-body">
-        <iframe data-tally-src="https://tally.so/embed/0QAer0" width="100%" style="border:none;border-radius:8px;background:transparent" id="tally-form" title="Claru"></iframe>
-        <script type="module" src="https://tally.so/widgets/embed.js"></script>
-      </div>
-    </div>
-    <div id="success-view" class="success" hidden>
-      <div class="tick">&check;</div>
-      <h3>¡Solicitud recibida!</h3>
-      <p>Revisaremos tu información y te contactamos dentro de 24 horas hábiles con tu evaluación y una muestra de cómo Claru llevaría tu contabilidad.</p>
-      <button class="btn ghost" id="m-done" style="margin-top:22px">Cerrar</button>
-    </div>
-  </div>
-</div>
 
 <script>
   // Hamburger menu
@@ -899,72 +878,6 @@
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // ---- modal ----
-  const ov=document.getElementById('ov'),modal=document.getElementById('modal');
-  const formView=document.getElementById('form-view'),successView=document.getElementById('success-view');
-  let lastFocus=null;
-
-  function openEval(plan){
-    lastFocus=document.activeElement;
-    formView.hidden=false;successView.hidden=true;
-    ov.classList.add('open');document.body.classList.add('locked');
-  }
-  function closeEval(){
-    ov.classList.remove('open');document.body.classList.remove('locked');
-    if(lastFocus)lastFocus.focus();
-  }
-  document.querySelectorAll('[data-open-eval]').forEach(b=>b.addEventListener('click',()=>{if(mobileNav.classList.contains('open'))closeMenu();openEval(b.getAttribute('data-plan'));}));
-  document.getElementById('m-close').addEventListener('click',closeEval);
-  document.getElementById('m-done').addEventListener('click',closeEval);
-  ov.addEventListener('click',e=>{if(e.target===ov)closeEval();});
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))closeEval();});
-
-  // ---- form submit handler ----
-  const form=document.getElementById('eval-form');
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();
-    const req=['f-nombre','f-correo','f-tel','f-razon'];
-    let ok=true;
-    req.forEach(function(id){
-      const el=document.getElementById(id);
-      if(!el.value.trim()){el.classList.add('err');ok=false;}
-      else el.classList.remove('err');
-    });
-    const correo=document.getElementById('f-correo');
-    const emailRe=/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-    if(correo.value && !emailRe.test(correo.value)){correo.classList.add('err');ok=false;}
-    if(!ok){const first=form.querySelector('.err');if(first)first.focus();return;}
-
-    const btn=form.querySelector('.m-submit');
-    const btnTxt=btn.textContent;
-    btn.disabled=true;btn.textContent='Enviando...';
-
-    const fd=new FormData(form);
-    const data={};
-    fd.forEach(function(v,k){data[k]=v;});
-
-    // Enviar a Vercel Function
-    try{
-      const res=await fetch('/api/tally-submit',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(data)
-      });
-      const result=await res.json();
-      if(result.success){
-        formView.hidden=true;successView.hidden=false;
-        modal.scrollIntoView({block:'start'});
-      }else{
-        alert('Error al enviar: '+result.error);
-        btn.disabled=false;btn.textContent=btnTxt;
-      }
-    }catch(err){
-      console.error('Submit error:',err);
-      alert('Error al enviar el formulario');
-      btn.disabled=false;btn.textContent=btnTxt;
-    }
-  });
-  form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>el.classList.remove('err')));
 </script>
 </body>
 </html>
