@@ -849,55 +849,8 @@
         <span class="planpill" id="planpill" hidden>Plan de interés: <b id="planpill-txt"></b></span>
       </div>
       <div class="m-body">
-        <form id="eval-form" novalidate>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tus datos</legend>
-            <div class="field full"><label for="f-nombre">Nombre <span class="req">*</span></label><input id="f-nombre" name="nombre" type="text" autocomplete="name" spellcheck="false"></div>
-            <div class="row">
-              <div class="field"><label for="f-correo">Correo <span class="req">*</span></label><input id="f-correo" name="correo" type="email" autocomplete="email"></div>
-              <div class="field"><label for="f-tel">Teléfono <span class="req">*</span></label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 ..."></div>
-            </div>
-          </fieldset>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tu empresa</legend>
-            <div class="field full"><label for="f-razon">Razón social <span class="req">*</span></label><input id="f-razon" name="razon_social" type="text" autocomplete="organization" spellcheck="false"></div>
-            <div class="field full"><label for="f-rubro">Rubro</label>
-              <select id="f-rubro" name="rubro">
-                <option value="">Selecciona…</option>
-                <option>Agencia (marketing, creativa, etc.)</option>
-                <option>Consultora</option>
-                <option>Software / Tecnología</option>
-                <option>Servicios profesionales</option>
-                <option>Otro</option>
-              </select>
-            </div>
-          </fieldset>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tu complejidad</legend>
-            <div class="row">
-              <div class="field"><label for="f-trab">N° de trabajadores</label>
-                <select id="f-trab" name="trabajadores">
-                  <option value="">Selecciona…</option>
-                  <option>Solo yo</option><option>1 a 3</option><option>4 a 10</option><option>11 a 30</option><option>Más de 30</option>
-                </select>
-              </div>
-              <div class="field"><label for="f-docs">Documentos al mes</label>
-                <select id="f-docs" name="documentos">
-                  <option value="">Selecciona…</option>
-                  <option>Menos de 20</option><option>20 a 100</option><option>100 a 300</option><option>Más de 300</option>
-                </select>
-              </div>
-            </div>
-            <div class="field full"><span class="flabel-grp" style="text-transform:none;letter-spacing:0;font-family:'Hanken Grotesk';font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:8px">¿Necesitas remuneraciones (liquidaciones de sueldo)?</span>
-              <div class="toggle">
-                <input type="radio" name="remuneraciones" id="rem-si" value="Sí"><label for="rem-si">Sí</label>
-                <input type="radio" name="remuneraciones" id="rem-no" value="No" checked><label for="rem-no">No</label>
-              </div>
-            </div>
-          </fieldset>
-          <button type="submit" class="btn accent m-submit">Enviar solicitud</button>
-          <p class="m-fine">Te contactamos dentro de 24 horas hábiles. Tus datos solo se usan para tu evaluación.</p>
-        </form>
+        <iframe data-tally-src="https://tally.so/embed/0QAer0" width="100%" style="border:none;border-radius:8px;background:transparent" id="tally-form" title="Claru"></iframe>
+        <script type="module" src="https://tally.so/widgets/embed.js"></script>
       </div>
     </div>
     <div id="success-view" class="success" hidden>
