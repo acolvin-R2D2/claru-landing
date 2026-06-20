@@ -221,14 +221,15 @@
   /* ---------- modal: solicita tu evaluación ---------- */
   .ov{position:fixed;inset:0;z-index:100;background:rgba(8,14,26,.55);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow:auto;opacity:0;pointer-events:none;transition:opacity .25s var(--ease)}
   .ov.open{opacity:1;pointer-events:auto}
-  .modal{background:var(--paper-2);border-radius:24px;max-width:560px;width:100%;border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(8,14,26,.5);transform:translateY(14px) scale(.99);transition:transform .25s var(--ease);margin:auto}
+  .modal{background:var(--paper-2);border-radius:24px;max-width:min(90vw,800px);width:100%;max-height:90vh;border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(8,14,26,.5);transform:translateY(14px) scale(.99);transition:transform .25s var(--ease);margin:auto;display:flex;flex-direction:column}
   .ov.open .modal{transform:none}
-  .m-head{padding:28px 30px 0;position:relative}
+  .m-head{padding:28px 30px 0;position:relative;flex-shrink:0}
   .m-head h3{font-size:26px;letter-spacing:-.02em}
   .m-head p{color:var(--ink-soft);font-size:15.5px;margin:8px 0 0}
   .m-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:18px;color:var(--ink-soft);line-height:1}
   .m-close:hover{color:var(--ink);border-color:var(--ink)}
-  .m-body{padding:22px 30px 30px}
+  .m-body{padding:22px 30px 30px;flex:1;overflow-y:auto}
+  .m-body iframe{max-width:100%;height:auto;min-height:600px}
   .fgroup{margin-top:20px}
   .fgroup>legend,.flabel-grp{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;border:0;padding:0;margin-bottom:12px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
