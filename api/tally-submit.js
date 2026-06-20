@@ -10,35 +10,46 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Faltan campos obligatorios' });
   }
 
-  // Mapear datos al formato de Tally (field names en Tally)
+  // Construir objeto de datos con los field names exactos de Tally
+  const tallyPayload = {
+    'Nombre': nombre,
+    'Correo': correo,
+    'Teléfono': telefono,
+    'Razón Social': razon_social,
+    'Rubro': rubro || '',
+    'Trabajadores': trabajadores || '',
+    'Documentos': documentos || '',
+    'Remuneraciones': remuneraciones || ''
+  };
+
+  // Convertir a URLSearchParams
   const tallyData = new URLSearchParams();
-  tallyData.append('Nombre', nombre);
-  tallyData.append('Correo', correo);
-  tallyData.append('Teléfono', telefono);
-  tallyData.append('Razón Social', razon_social);
-  tallyData.append('Rubro', rubro || '');
-  tallyData.append('Trabajadores', trabajadores || '');
-  tallyData.append('Documentos', documentos || '');
-  tallyData.append('Remuneraciones', remuneraciones || '');
+  Object.keys(tallyPayload).forEach(key => {
+    tallyData.append(key, tallyPayload[key]);
+  });
 
   try {
-    // Enviar a Tally via POST directo al endpoint del formulario
+    // Enviar a Tally usando el endpoint del formulario
     const response = await fetch('https://tally.so/r/0QAer0', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
       body: tallyData.toString(),
+      redirect: 'follow'
     });
 
-    if (!response.ok) {
-      console.error('Tally API error:', response.status, await response.text());
-      return res.status(response.status).json({ error: 'Error al enviar a Tally' });
-    }
+    console.log('Tally response status:', response.status);
 
-    return res.status(200).json({ success: true, message: 'Solicitud enviada correctamente' });
+    // Tally redirige después de submit exitoso, así que 200-399 es éxito
+    if (response.status >= 200 && response.status < 400) {
+      return res.status(200).json({ success: true, message: 'Solicitud enviada a Tally correctamente' });
+    } else {
+      console.error('Tally error:', response.status);
+      return res.status(500).json({ error: 'Error al enviar a Tally: ' + response.status });
+    }
   } catch (error) {
     console.error('Tally submit error:', error);
-    return res.status(500).json({ error: 'Error interno del servidor: ' + error.message });
+    return res.status(500).json({ error: 'Error interno: ' + error.message });
   }
 }
