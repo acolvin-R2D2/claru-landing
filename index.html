@@ -900,14 +900,11 @@
 
   // ---- modal ----
   const ov=document.getElementById('ov'),modal=document.getElementById('modal');
-  const planpill=document.getElementById('planpill'),planpillTxt=document.getElementById('planpill-txt'),fPlan=document.getElementById('f-plan');
   const formView=document.getElementById('form-view'),successView=document.getElementById('success-view');
   let lastFocus=null;
 
   function openEval(plan){
     lastFocus=document.activeElement;
-    if(plan){planpillTxt.textContent=plan;planpill.hidden=false;fPlan.value=plan;}
-    else{planpill.hidden=true;fPlan.value='Aún no sé';}
     formView.hidden=false;successView.hidden=true;
     ov.classList.add('open');document.body.classList.add('locked');
   }
