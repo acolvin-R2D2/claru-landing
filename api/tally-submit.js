@@ -22,8 +22,8 @@ export default async function handler(req, res) {
   tallyData.append('Remuneraciones', remuneraciones || '');
 
   try {
-    // Enviar a Tally via POST directo
-    const response = await fetch('https://tally.so/api/forms/0QAer0/submissions', {
+    // Enviar a Tally via POST directo al endpoint del formulario
+    const response = await fetch('https://tally.so/r/0QAer0', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
