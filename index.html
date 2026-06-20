@@ -849,56 +849,8 @@
         <span class="planpill" id="planpill" hidden>Plan de interés: <b id="planpill-txt"></b></span>
       </div>
       <div class="m-body">
-        <form id="eval-form" novalidate>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tus datos</legend>
-            <div class="field full"><label for="f-nombre">Nombre <span class="req">*</span></label><input id="f-nombre" name="nombre" type="text" autocomplete="name" spellcheck="false"></div>
-            <div class="row">
-              <div class="field"><label for="f-correo">Correo <span class="req">*</span></label><input id="f-correo" name="correo" type="email" autocomplete="email"></div>
-              <div class="field"><label for="f-tel">Teléfono <span class="req">*</span></label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 ..."></div>
-            </div>
-          </fieldset>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tu empresa</legend>
-            <div class="field full"><label for="f-razon">Razón social <span class="req">*</span></label><input id="f-razon" name="razon_social" type="text" autocomplete="organization" spellcheck="false"></div>
-            <div class="field full"><label for="f-rubro">Rubro</label>
-              <select id="f-rubro" name="rubro">
-                <option value="">Selecciona…</option>
-                <option>Agencia (marketing, creativa, etc.)</option>
-                <option>Consultora</option>
-                <option>Software / Tecnología</option>
-                <option>Servicios profesionales</option>
-                <option>Otro</option>
-              </select>
-            </div>
-          </fieldset>
-          <fieldset class="fgroup" style="border:0;padding:0;margin:0">
-            <legend>Tu complejidad</legend>
-            <div class="row">
-              <div class="field"><label for="f-trab">N° de trabajadores</label>
-                <select id="f-trab" name="trabajadores">
-                  <option value="">Selecciona…</option>
-                  <option>Solo yo</option><option>1 a 3</option><option>4 a 10</option><option>11 a 30</option><option>Más de 30</option>
-                </select>
-              </div>
-              <div class="field"><label for="f-docs">Documentos al mes</label>
-                <select id="f-docs" name="documentos">
-                  <option value="">Selecciona…</option>
-                  <option>Menos de 20</option><option>20 a 100</option><option>100 a 300</option><option>Más de 300</option>
-                </select>
-              </div>
-            </div>
-            <div class="field full"><span class="flabel-grp" style="text-transform:none;letter-spacing:0;font-family:'Hanken Grotesk';font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:8px">¿Necesitas remuneraciones (liquidaciones de sueldo)?</span>
-              <div class="toggle">
-                <input type="radio" name="remuneraciones" id="rem-si" value="Sí"><label for="rem-si">Sí</label>
-                <input type="radio" name="remuneraciones" id="rem-no" value="No" checked><label for="rem-no">No</label>
-              </div>
-            </div>
-          </fieldset>
-          <input type="hidden" name="plan" id="f-plan">
-          <button type="submit" class="btn accent m-submit">Enviar solicitud</button>
-          <p class="m-fine">Te contactamos dentro de 24 horas hábiles. Tus datos solo se usan para tu evaluación.</p>
-        </form>
+        <iframe data-tally-src="https://tally.so/embed/0QAer0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Form Claru"></iframe>
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
     <div id="success-view" class="success" hidden>
@@ -970,83 +922,8 @@
   ov.addEventListener('click',e=>{if(e.target===ov)closeEval();});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))closeEval();});
 
-  // Sanitización básica anti-XSS
-  function sanitize(str){
-    return String(str).replace(/[<>"'`]/g, function(c){
-      return {'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','`':'&#x60;'}[c];
-    }).trim().slice(0,500);
-  }
-
-  // Tally integration — Form ID: 0QAer0
-  const form=document.getElementById('eval-form');
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();
-    const req=['f-nombre','f-correo','f-tel','f-razon'];
-    let ok=true;
-    req.forEach(function(id){
-      const el=document.getElementById(id);
-      if(!el.value.trim()){el.classList.add('err');ok=false;}
-      else el.classList.remove('err');
-    });
-    const correo=document.getElementById('f-correo');
-    const emailRe=/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-    if(correo.value && !emailRe.test(correo.value)){correo.classList.add('err');ok=false;}
-    if(!ok){const first=form.querySelector('.err');if(first)first.focus();return;}
-
-    const btn=form.querySelector('.m-submit');
-    const btnTxt=btn.textContent;
-    btn.disabled=true;btn.textContent='Enviando...';
-
-    const fd=new FormData(form);
-    const data={};
-    fd.forEach(function(v,k){data[k]=v;});
-
-    // Enviar a Tally via hidden iframe trick (CORS-safe)
-    try{
-      const tallyForm=document.createElement('form');
-      tallyForm.method='POST';
-      tallyForm.action='https://tally.so/r/0QAer0';
-      tallyForm.target='tally-iframe';
-      tallyForm.style.display='none';
-      const fields={
-        'Nombre': sanitize(data['nombre']||''),
-        'Correo': sanitize(data['correo']||''),
-        'Telefono': sanitize(data['telefono']||''),
-        'Razon Social': sanitize(data['razon_social']||''),
-        'Rubro': sanitize(data['rubro']||''),
-        'Trabajadores': sanitize(data['trabajadores']||''),
-        'Documentos': sanitize(data['documentos']||''),
-        'Remuneraciones': sanitize(data['remuneraciones']||''),
-        'Plan': sanitize(data['plan']||'')
-      };
-      // campos originales sobreescritos — ignorar el bloque de abajo
-      const _fields={
-      };
-
-      Object.keys(fields).forEach(function(k){
-        const inp=document.createElement('input');
-        inp.type='hidden';inp.name=k;inp.value=fields[k];
-        tallyForm.appendChild(inp);
-      });
-      const iframe=document.createElement('iframe');
-      iframe.name='tally-iframe';
-      iframe.style.display='none';
-      document.body.appendChild(iframe);
-      document.body.appendChild(tallyForm);
-      tallyForm.submit();
-      setTimeout(function(){
-        document.body.removeChild(tallyForm);
-        document.body.removeChild(iframe);
-      },3000);
-    }catch(err){
-      console.warn('Tally submit error:',err);
-    }
-
-    btn.disabled=false;btn.textContent=btnTxt;
-    formView.hidden=true;successView.hidden=false;
-    modal.scrollIntoView({block:'start'});
-  });
-  form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>el.classList.remove('err')));
+  // Tally embed maneja el formulario automáticamente
+  // (validación, envío, confirmación) — no necesita JS custom
 </script>
 </body>
 </html>
